@@ -1,6 +1,10 @@
 package com.in_con.www.wshkim.member;
 
 import android.content.Context;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 import java.util.ArrayList;
 
@@ -8,30 +12,58 @@ import java.util.ArrayList;
  * Created by 1027 on 2016-11-12.
  */
 
-public class MemberDAO {
+public class MemberDAO extends SQLiteOpenHelper {
+
     public MemberDAO(Context context) {
+        super(context, "", null, 1);
     }
 
-    public void join(MemberDTO param){
+    @Override
+    public void onCreate(SQLiteDatabase db) {
+
     }
-    public int count(){
+
+    @Override
+    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+
+    }
+
+    public void insert(MemberDTO param){
+        Log.d("JOIN ID : ", param.getId());
+        Log.d("JOIN PW : ", param.getPw());
+        Log.d("JOIN NAME : ", param.getName());
+        Log.d("JOIN EMAIL : ", param.getEmail());
+        Log.d("JOIN PHONE : ", param.getPhone());
+        Log.d("JOIN ADDR : ", param.getAddr());
+
+        String sql = "";
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.execSQL(sql);
+    }
+    public int selectCount(){
         int count = 0;
         return count;
     }
-    public  MemberDTO detail(String id){
+    public MemberDTO selectOne(String id){
         MemberDTO member = new MemberDTO();
         return member;
     }
-    public ArrayList<MemberDTO> list(){
+    public ArrayList<MemberDTO> selectList(){
         ArrayList<MemberDTO> list = new ArrayList<MemberDTO>();
-        return  list;
-
+        return list;
     }
-    public MemberDTO login(String id,String pw){
-        MemberDTO member =new MemberDTO();
+
+    public MemberDTO login(MemberDTO param) {
+        Log.d("JOIN ID : ", param.getId());
+        Log.d("JOIN PW : ", param.getPw());
+        MemberDTO member = new MemberDTO();
+        String sql = "";
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(sql, null);
+
         return member;
     }
-    public void undate(MemberDTO param){
+    public void update(MemberDTO param){
 
     }
     public void delete(MemberDTO param){

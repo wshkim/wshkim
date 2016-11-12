@@ -5,38 +5,19 @@ package com.in_con.www.wshkim.member;
  */
 
 public class MemberDTO {
-    private String id,pw,mame,email,photo,addr;
+    private String id;
+    private String pw;
+    private String name;
+    private String phone;
+    private String email;
+    private String photo;
 
-    public String getId() {
-        return id;
+    public String getAddr() {
+        return addr;
     }
 
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public String getPw() {
-        return pw;
-    }
-
-    public void setPw(String pw) {
-        this.pw = pw;
-    }
-
-    public String getMame() {
-        return mame;
-    }
-
-    public void setMame(String mame) {
-        this.mame = mame;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
+    public void setAddr(String addr) {
+        this.addr = addr;
     }
 
     public String getPhoto() {
@@ -47,20 +28,56 @@ public class MemberDTO {
         this.photo = photo;
     }
 
-    public String getAddr() {
-        return addr;
+    public String getEmail() {
+        return email;
     }
 
-    public void setAddr(String addr) {
-        this.addr = addr;
+    public void setEmail(String email) {
+        this.email = email;
     }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getPw() {
+        return pw;
+    }
+
+    public void setPw(String pw) {
+        this.pw = pw;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    private String addr;
+
+
 
     @Override
     public String toString() {
         return "회원정보{" +
                 "아이디='" + id + '\'' +
                 ", 비번='" + pw + '\'' +
-                ", 이름='" + mame + '\'' +
+                ", 이름='" + name + '\'' +
                 ", email='" + email + '\'' +
                 ", 이미지='" + photo + '\'' +
                 ", 주소='" + addr + '\'' +

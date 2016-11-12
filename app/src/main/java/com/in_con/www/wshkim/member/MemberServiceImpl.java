@@ -1,6 +1,7 @@
 package com.in_con.www.wshkim.member;
 
 import android.content.Context;
+import android.util.Log;
 
 import java.util.ArrayList;
 
@@ -9,44 +10,58 @@ import java.util.ArrayList;
  */
 
 public class MemberServiceImpl implements MemberService {
-    MemberDAO dao;
+    MemberDAO memberDAO;
 
     public MemberServiceImpl(Context context) {
-       dao = new MemberDAO(context);
+        memberDAO = new MemberDAO(context);
     }
 
     @Override
     public void join(MemberDTO param) {
-
+        Log.d("JOIN ID : ", param.getId());
+        Log.d("JOIN PW : ", param.getPw());
+        Log.d("JOIN NAME : ", param.getName());
+        Log.d("JOIN EMAIL : ", param.getEmail());
+        Log.d("JOIN PHONE : ", param.getPhone());
+        Log.d("JOIN ADDR : ", param.getAddr());
+        memberDAO.insert(param);
     }
 
     @Override
-    public void count() {
-
+    public int count() {
+        int count = 0;
+        count = memberDAO.selectCount();
+        return count;
     }
 
     @Override
     public MemberDTO detail(String id) {
-        return null;
+        MemberDTO member = new MemberDTO();
+        member = memberDAO.selectOne(id);
+        return member;
     }
 
     @Override
     public ArrayList<MemberDTO> list() {
-        return null;
+        ArrayList<MemberDTO> list = new  ArrayList<MemberDTO>();
+        list = memberDAO.selectList();
+        return list;
     }
 
     @Override
-    public MemberDTO login(String id, String pw) {
-        return null;
+    public MemberDTO login(MemberDTO param) {
+        MemberDTO member = new MemberDTO();
+        member = memberDAO.login(param);
+        return member;
     }
 
     @Override
-    public void undate(MemberDTO param) {
-
+    public void update(MemberDTO param) {
+        memberDAO.update(param);
     }
 
     @Override
     public void delete(MemberDTO param) {
-
+        memberDAO.delete(param);
     }
 }
